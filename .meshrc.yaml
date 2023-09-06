@@ -1,0 +1,22 @@
+serve:
+  hostname: 0.0.0.0
+  port: 8888
+  browser: false
+  playground: true
+  cors:
+    origin: "*"
+
+sources:
+  - name: example
+    handler:
+      graphql:
+        endpoint: http://localhost:4000/graphql
+        subscriptionsProtocol: "SSE"
+    transforms:
+      - encapsulate:
+          applyTo:
+            query: true
+            mutation: true
+            subscription: true
+
+

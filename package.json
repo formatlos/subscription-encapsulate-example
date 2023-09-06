@@ -1,0 +1,33 @@
+{
+  "name": "example-subscriptions",
+  "version": "0.13.6",
+  "private": true,
+  "scripts": {
+    "check": "tsc --pretty --noEmit",
+    "codegen": "graphql-codegen --config codegen.yml",
+    "postinstall": "npm run codegen",
+    "precheck": "npm run codegen",
+    "start": "concurrently --kill-others \"npm:start:service\" \"npm:start:mesh\"",
+    "start:mesh": "mesh dev",
+    "start:service": "ts-node src/index.ts"
+  },
+  "dependencies": {
+    "@graphql-mesh/cli": "^0.87.5",
+    "@graphql-mesh/graphql": "^0.95.2",
+    "@graphql-mesh/json-schema": "^0.95.3",
+    "@graphql-mesh/openapi": "^0.95.3",
+    "@graphql-mesh/transform-encapsulate": "^0.95.3",
+    "@graphql-mesh/transform-filter-schema": "^0.95.2",
+    "@graphql-mesh/transform-prefix": "^0.95.2",
+    "graphql": "^16.8.0",
+    "graphql-yoga": "4.0.4"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "5.0.0",
+    "@graphql-codegen/typescript": "4.0.1",
+    "@graphql-codegen/typescript-resolvers": "4.0.1",
+    "concurrently": "^8.2.1",
+    "ts-node": "10.9.1",
+    "typescript": "5.1.6"
+  }
+}
